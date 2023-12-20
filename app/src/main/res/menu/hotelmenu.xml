@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Bussiness"
+            android:icon="@drawable/discuss">
+
+            <menu>
+                <item
+                    android:id="@+id/Homepage"
+                    android:icon="@drawable/ic_baseline_home_24"
+                    android:title="Home">
+
+                </item>
+                <item
+                    android:id="@+id/menuMySale"
+                    android:icon="@drawable/report"
+                    android:title="Report">
+
+                </item>
+                <item
+                    android:visible="false"
+                    android:id="@+id/menumarketing"
+                    android:icon="@drawable/marketing"
+                    android:title="Marketing">
+
+                </item>
+                <item
+                    android:visible="false"
+                    android:id="@+id/menuitems"
+                    android:icon="@drawable/categories"
+                    android:title="Menu">
+
+                </item>
+            </menu>
+        </item>
+
+        <item android:title="Orders">
+            <menu>
+                <item
+                    android:id="@+id/menuAllOrders"
+                    android:icon="@drawable/bell"
+                    android:title="Orders">
+
+                </item>
+                <item
+                    android:id="@+id/menuCompleteOrders"
+                    android:icon="@drawable/allorder"
+                    android:title="History">
+
+                </item>
+
+
+                <item
+                    android:visible="false"
+                    android:id="@+id/feedback"
+                    android:icon="@drawable/discuss"
+                    android:title="Feedback">
+
+                </item>
+                <item
+                    android:id="@+id/menuLogout"
+                    android:icon="@drawable/power"
+                    android:title="Logout">
+
+                </item>
+                <item
+                    android:id="@+id/menusupport"
+                    android:icon="@drawable/support"
+                    android:title="Support">
+
+                </item>
+
+
+            </menu>
+        </item>
+
+
+    </group>
+
+    <!--    <item android:title="Communicate through">-->
+
+    <!--        <menu>-->
+    <!--            <item-->
+    <!--                android:id="@+id/share"-->
+    <!--                android:icon="@drawable/ic_baseline_share_24"-->
+    <!--                android:title="Share"></item>-->
+
+    <!--            <item-->
+    <!--                android:id="@+id/send"-->
+    <!--                android:icon="@drawable/ic_baseline_send_24"-->
+    <!--                android:title="Send"></item>-->
+
+
+    <!--        </menu>-->
+    <!--    </item>-->
+
+
+</menu>

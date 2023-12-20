@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "192706668737",
+    "project_id": "food-order-hotel-admin",
+    "storage_bucket": "food-order-hotel-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192706668737:android:92ccd3ea52efd8d9124c40",
+        "android_client_info": {
+          "package_name": "food.food_order_hotel_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192706668737-8sqcnrr323c07ib77cuptqj86g23p6de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCovUfggEzWNEEBb9lX0LieL-Cm5Jb_Z1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192706668737-8sqcnrr323c07ib77cuptqj86g23p6de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
