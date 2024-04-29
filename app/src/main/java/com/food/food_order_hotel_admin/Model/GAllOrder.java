@@ -34,6 +34,22 @@ public class GAllOrder {
         @Expose
         private String sale_id;
 
+        @SerializedName("per_order_payment_status")
+        @Expose
+        private String per_order_payment_status;
+
+ @SerializedName("hotel_price")
+        @Expose
+        private String hotel_price;
+ @SerializedName("hotel_commision")
+        @Expose
+        private String hotel_commision;
+    @SerializedName("net_payable_hotel")
+        @Expose
+        private String net_payable_hotel;
+
+
+
         @SerializedName("sale_code")
         @Expose
         private String sale_code;
@@ -94,8 +110,32 @@ public class GAllOrder {
         @Expose
         public String delivery_state;
 
+        public String getHotel_real_price_cal() {
+            return hotel_real_price_cal;
+        }
+
+        public void setHotel_real_price_cal(String hotel_real_price_cal) {
+            this.hotel_real_price_cal = hotel_real_price_cal;
+        }
+
+        @SerializedName("hotel_real_price_cal")
+        @Expose
+        public String hotel_real_price_cal;
+
         public String getDelivery_state() {
             return delivery_state;
+        }
+        public String getNet_payable_hotel() {
+            return net_payable_hotel;
+        }
+        public String getHotel_commision() {
+            return hotel_commision;
+        }
+        public String getHotel_price() {
+            return hotel_price;
+        }
+        public String getPer_order_payment_status() {
+            return per_order_payment_status;
         }
 
         public void setDelivery_state(String delivery_state) {

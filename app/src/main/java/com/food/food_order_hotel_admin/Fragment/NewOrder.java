@@ -90,7 +90,7 @@ public class NewOrder extends Fragment {
                                 try {
                                     for(int i=0;i<orderList.size();i++)
                                     {
-                                        if(orderList.get(i).getStatus().equalsIgnoreCase("Placed") || orderList.get(i).getStatus().equalsIgnoreCase("Shipped"))
+                                        if(orderList.get(i).getStatus().equalsIgnoreCase("Placed") || orderList.get(i).getStatus().equalsIgnoreCase("Shipped")|| orderList.get(i).getStatus().equalsIgnoreCase("Ready"))
                                         {
                                             NewOrderList.add(orderList.get(i));
                                         }
@@ -153,7 +153,7 @@ public class NewOrder extends Fragment {
                 }
                 for(int j=0;j<orderList.size();j++)
                 {
-                    if((orderList.get(j).getStatus().equalsIgnoreCase("Placed")|| orderList.get(j).getStatus().equalsIgnoreCase("Shipped")) && zoneId.equals(orderList.get(j).getZone_id()))
+                    if((orderList.get(j).getStatus().equalsIgnoreCase("Placed")|| orderList.get(j).getStatus().equalsIgnoreCase("Shipped"))|| orderList.get(j).getStatus().equalsIgnoreCase("Ready")  && zoneId.equals(orderList.get(j).getZone_id()))
                     {
                         NewOrderList.add(orderList.get(j));
                     }

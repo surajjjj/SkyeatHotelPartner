@@ -77,6 +77,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>
                 holder.imgVeg.setImageResource(R.drawable.ic_nonveg);
             }
             holder.txtItemName.setText(object.getString("product_name"));
+
+
+
             holder.txtQuantity.setText(object.getString("qty"));
 //                holder.imgDelete.setVisibility(View.VISIBLE);
             holder.txtPrice.setText(object.getString("price"));

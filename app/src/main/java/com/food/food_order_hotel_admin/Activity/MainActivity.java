@@ -46,49 +46,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle drawerToggle;
     SharedPreferences sharedPreferences;
     public static String ZONE_NAME,ID,managerName;
-    private static final String ONESIGNAL_APP_ID = "c27752b4-e673-4978-8e24-18a67ba0d312";
+//    private static final String ONESIGNAL_APP_ID = "c27752b4-e673-4978-8e24-18a67ba0d312";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
-        OneSignal.initWithContext(this);
-        OneSignal.setAppId(ONESIGNAL_APP_ID);
-        OneSignal.promptForPushNotifications();
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this,  new OnSuccessListener<InstanceIdResult>() {
-            @Override
-            public void onSuccess(InstanceIdResult instanceIdResult) {
-                String mToken = instanceIdResult.getToken();
-
-                Log.e("Token",mToken);
-                 Toast.makeText(MainActivity.this, ""+mToken, Toast.LENGTH_SHORT).show();
-
-//                if(cd.isConnectingToInternet()){
-//                    String url= null;
+//        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+//        OneSignal.initWithContext(this);
+//        OneSignal.setAppId(ONESIGNAL_APP_ID);
+//        OneSignal.promptForPushNotifications();
+//        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+//            @Override
+//            public void onSuccess(InstanceIdResult instanceIdResult) {
+//                String mToken = instanceIdResult.getToken();
 //
-//                        try {
-//                            url = Config.get_url+
-//                                    "action=update_hotel_token" +
-//                                    "&id=" + URLEncoder.encode(store.getId() ,"utf-8")+
-//                                    "&fcm_token=" + URLEncoder.encode(mToken, "utf-8");
-//                        } catch (UnsupportedEncodingException e) {
-//                            e.printStackTrace();
-//                        }
+//                Log.e("Token",mToken);
+//                 Toast.makeText(MainActivity.this, ""+mToken, Toast.LENGTH_SHORT).show();
 //
-//                    updatetoken = new UpdateToken();
-//                    updatetoken.execute(url);
+////                if(cd.isConnectingToInternet()){
+////                    String url= null;
+////
+////                        try {
+////                            url = Config.get_url+
+////                                    "action=update_hotel_token" +
+////                                    "&id=" + URLEncoder.encode(store.getId() ,"utf-8")+
+////                                    "&fcm_token=" + URLEncoder.encode(mToken, "utf-8");
+////                        } catch (UnsupportedEncodingException e) {
+////                            e.printStackTrace();
+////                        }
+////
+////                    updatetoken = new UpdateToken();
+////                    updatetoken.execute(url);
+////
+////                }else{
+//////                                Toast.makeText(HotelAdmin_MenusActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+//////                                finish();
+////                }
+////
 //
-//                }else{
-////                                Toast.makeText(HotelAdmin_MenusActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
-////                                finish();
-//                }
 //
-
-
-            }
-        });
+//            }
+//        });
 
 //        FirebaseMessaging.getInstance().subscribeToTopic("NewOrder")
 //                .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,7 +28,6 @@ import android.widget.Toast;
 
 import com.food.food_order_hotel_admin.Activity.DeliveryBoyActivity;
 import com.food.food_order_hotel_admin.Activity.LoginTypeActivity;
-import com.food.food_order_hotel_admin.Activity.MainActivity;
 import com.food.food_order_hotel_admin.Activity.PendingPayment;
 import com.food.food_order_hotel_admin.Activity.SplashActivity;
 import com.food.food_order_hotel_admin.Constant;
@@ -100,6 +100,11 @@ public class DeliveryBoyMainActivity extends AppCompatActivity implements Naviga
         imgGullak=headerView.findViewById(R.id.imgGullak);
         //txtVersionCode = findViewById(R.id.txtVersionCode);
         navigationView.setNavigationItemSelectedListener(this);
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//
+//        }
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DeliveryBoyAllOrder());
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_draw_open,R.string.navigation_draw_open);
@@ -200,6 +205,7 @@ public class DeliveryBoyMainActivity extends AppCompatActivity implements Naviga
             }
         });
     }
+
 
     @SuppressLint("ResourceAsColor")
     public void openGullakPopPup()

@@ -184,7 +184,7 @@ public class SplashActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Intent intent=new Intent(SplashActivity.this, LoginActivity.class);
+                            Intent intent=new Intent(SplashActivity.this, otpscreen.class);
                             startActivity(intent);
                             finish(); // Optional: Call finish() to close the splash activity and prevent the user from going back to it.
                         }

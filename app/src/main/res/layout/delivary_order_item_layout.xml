@@ -25,7 +25,7 @@
                 android:layout_height="140dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="-1dp"
-                android:background="#f9f9f9"
+                android:background="@drawable/multicolor"
                 android:orientation="vertical"
                 android:scaleType="centerCrop">
 
@@ -114,7 +114,7 @@
                         android:fontFamily="serif"
                         android:text="Estimated Payout :-"
 
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorGrey2"
                         android:textSize="14dp"
                          />
 
@@ -125,46 +125,13 @@
                         android:layout_weight="7"
                         android:fontFamily="serif"
                         android:gravity="right"
-                        android:textColor="#33cc33"
+                        android:textColor="?attr/actionModeSplitBackground"
                         android:textSize="14dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/lin4"
-                    android:weightSum="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lin3"
-                    android:layout_marginTop="10dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="3"
-                        android:fontFamily="serif"
-                        android:text="Status:-"
-                        android:textColor="@color/black"
-                        android:textSize="14dp"
-                       />
-
-                    <TextView
-
-                        android:id="@+id/tvOrderType"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="7"
-                        android:fontFamily="serif"
-
-                        android:gravity="right"
-                        android:textColor="@color/colorBalck"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -181,7 +148,7 @@
                         android:layout_weight="3"
                         android:fontFamily="serif"
                         android:text="Est Payout Date: -"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorGrey2"
                         android:textSize="14dp"
                       />
 
@@ -197,10 +164,50 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lin4"
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin3"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="3"
+                        android:fontFamily="serif"
+                        android:text="Status:-"
+                        android:textColor="@color/colorGrey2"
+                        android:textSize="14dp"
+                        />
+
+                    <TextView
+
+                        android:id="@+id/tvOrderType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:fontFamily="serif"
+
+                        android:gravity="right"
+                        android:textColor="@color/colorBalck"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/colorGrey2" />
   <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                      android:weightSum="10"
+      android:visibility="gone"
                     android:layout_below="@+id/lin3"
                     android:layout_marginTop="10dp">
 

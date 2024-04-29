@@ -11,20 +11,21 @@
         android:layout_marginTop="10dp">
 
         <ImageView
-            android:visibility="gone"
             android:id="@+id/imgBack1"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:src="@drawable/baseline_arrow_back_24">
+            android:src="@drawable/allorder"
+            app:tint="@color/colorGreen">
         </ImageView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Payment Details"
-            android:textSize="22sp"
-            android:textColor="@color/colorPrimary"
+            android:text="Earnings Details"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/colorGrey2"
             android:fontFamily="@font/gilroybold"
-            android:gravity="center"/>
+            android:gravity="start"/>
 
     </LinearLayout>
 
@@ -46,6 +47,7 @@
                 android:textColor="@color/colorPrimary"
                 android:text=""/>
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -65,19 +67,42 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:weightSum="4"
-                android:orientation="horizontal">
+                android:background="@drawable/multicolor_new"
+                android:orientation="vertical">
                 <EditText
+                    android:layout_gravity="center"
+                    android:id="@+id/txtRemainCash"
+                    android:padding="60dp"
+                    android:focusable="false"
+
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </EditText>
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="35dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text=" Minimum 100Rs"/>
+
+
+                <EditText
+                    android:visibility="gone"
                     android:focusable="false"
                     android:clickable="false"
-                    android:id="@+id/txtRemainCash"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:hint="* Remain Cash"
                     android:textSize="16sp"
-                    android:text="0.00"
+                    android:text=""
                     android:inputType="text"
                     android:padding="15dp" />
 
@@ -137,6 +162,7 @@
                 android:inputType="text"
                 android:padding="15dp" />
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -144,6 +170,7 @@
                 android:textColor="@color/colorPrimary"
                 android:text="* Message"/>
             <EditText
+                android:visibility="gone"
                 android:id="@+id/txtMassage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -214,14 +241,14 @@
 <LinearLayout
     android:orientation="horizontal"
     android:weightSum="10"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
         android:layout_margin="5dp"
 
         android:layout_weight="5"
         android:id="@+id/btnSubmitCash"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="55dp"
         android:textSize="14dp"
         android:text="Send Request"
@@ -229,11 +256,12 @@
 
         android:layout_gravity="center"
         android:fontFamily="@font/gilroybold"
-        android:background="@color/black"
+        android:background="@color/colorGreen"
         android:textColor="@color/colorWhite"
         />
 
     <EditText
+        android:visibility="gone"
         android:layout_margin="5dp"
 
         android:layout_weight="5"

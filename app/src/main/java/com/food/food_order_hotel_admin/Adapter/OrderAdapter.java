@@ -15,12 +15,9 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.food.food_order_hotel_admin.Activity.DelivaryBoy.DeliveryBoyOrderDetailActivity;
-import com.food.food_order_hotel_admin.Activity.LoginTypeActivity;
 import com.food.food_order_hotel_admin.Activity.OrderDetailActivity;
 import com.food.food_order_hotel_admin.Constant;
 import com.food.food_order_hotel_admin.Model.GAllOrder;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -78,7 +75,7 @@ OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder>
 
         holder.txt_city.setText("");
         int backgroundColor;
-        if (orderList.get(position).getStatus().equals("Placed"))
+        if (orderList.get(position).getStatus().equals("Placed")&&orderList.get(position).getStatus().equals("Ready")&&orderList.get(position).getStatus().equals("Shipped"))
         {
             holder.process.setVisibility(View.VISIBLE);
         }
@@ -110,6 +107,10 @@ OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder>
                 String coustmAddress=orderList.get(position).getShipping_address();
                 String status=orderList.get(position).getStatus();
                 String deliveryState=orderList.get(position).getDelivery_state();
+                String per_order_payment_status=orderList.get(position).getPer_order_payment_status();
+                String hotel_price=orderList.get(position).getHotel_price();
+                String hotel_commision=orderList.get(position).getHotel_commision();
+                String net_payable_hotel=orderList.get(position).getNet_payable_hotel();
                 try
                 {
                     JSONObject json1 = new JSONObject(coustmAddress);
@@ -126,31 +127,37 @@ OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder>
                 String zoneId=orderList.get(position).getZone_id();
                 String paymentType=orderList.get(position).getPayment_type();
                 String vendorId=orderList.get(position).getVendor();
+                String hotelPrice=orderList.get(position).getHotel_real_price_cal();
                 Double allTotal= Double.valueOf(orderList.get(position).getGrand_totals());
 
-                if(LoginTypeActivity.isDeliveryBoy)
-                {
-                    Intent intent=new Intent(context, DeliveryBoyOrderDetailActivity.class);
-                    intent.putExtra("status",status);
-                    intent.putExtra("delivery_state",deliveryState);
-                    intent.putExtra("saleId",saleId);
-                    intent.putExtra("zoneId",zoneId);
-                    intent.putExtra("vendorId",vendorId);
-                    // intent.putExtra("coustmAddress",coustmAddress);
-                    intent.putExtra("userName",userName);
-                    intent.putExtra("phoneNo",phoneNo);
-                    intent.putExtra("driverId",driverId);
-                    intent.putExtra("productDetails",productDetails);
-                    intent.putExtra("itemTotal",itemTotal);
-                    intent.putExtra("paymentType",paymentType);
-                    intent.putExtra("allTotal",String.valueOf(allTotal));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    OrderAdapter.this.context.startActivity(intent);
-                }
-                else {
+//                if(LoginTypeActivity.isDeliveryBoy)
+//                {
+//                    Intent intent=new Intent(context, DeliveryBoyOrderDetailActivity.class);
+//                    intent.putExtra("status",status);
+//                    intent.putExtra("delivery_state",deliveryState);
+//                    intent.putExtra("saleId",saleId);
+//                    intent.putExtra("zoneId",zoneId);
+//                    intent.putExtra("vendorId",vendorId);
+//                    // intent.putExtra("coustmAddress",coustmAddress);
+//                    intent.putExtra("userName",userName);
+//                    intent.putExtra("phoneNo",phoneNo);
+//                    intent.putExtra("driverId",driverId);
+//                    intent.putExtra("productDetails",productDetails);
+//                    intent.putExtra("itemTotal",itemTotal);
+//                    intent.putExtra("paymentType",paymentType);
+//                    intent.putExtra("allTotal",String.valueOf(allTotal));
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    OrderAdapter.this.context.startActivity(intent);
+//                }
+//                else {
                     Intent intent=new Intent(context, OrderDetailActivity.class);
                     intent.putExtra("status",status);
                     intent.putExtra("saleId",saleId);
+                    intent.putExtra("net_payable_hotel",net_payable_hotel);
+                    intent.putExtra("hotel_commision",hotel_commision);
+                    intent.putExtra("per_order_payment_status",per_order_payment_status);
+                    intent.putExtra("deliveryState",deliveryState);
+                    intent.putExtra("hotel_price",hotel_price);
                     intent.putExtra("zoneId",zoneId);
                     intent.putExtra("vendorId",vendorId);
                     // intent.putExtra("coustmAddress",coustmAddress);
@@ -160,10 +167,11 @@ OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder>
                     intent.putExtra("productDetails",productDetails);
                     intent.putExtra("itemTotal",itemTotal);
                     intent.putExtra("paymentType",paymentType);
+                    intent.putExtra("hotel_real_price_cal",hotelPrice);
                     intent.putExtra("allTotal",String.valueOf(allTotal));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     OrderAdapter.this.context.startActivity(intent);
-                }
+               // }
 //                if (onClickListener != null) {
 //                    onClickListener.onClick(position);
 //                }
@@ -180,7 +188,7 @@ OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder>
 
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
-       public  TextView txtSaleID,txtAddress,txtDate,txtStatus,process,txt_city;
+       public  TextView txtSaleID,txtAddress,txtDate,txtStatus,process,txt_city,txtItemTotal;
        public CardView cardView;
         LinearLayout linOnlinePayment;
         public MyViewHolder(@NonNull View itemView)
@@ -193,9 +201,8 @@ OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder>
             cardView=itemView.findViewById(R.id.cardView);
             txtStatus=itemView.findViewById(R.id.txtStatus);
             process=itemView.findViewById(R.id.process);
+            txtItemTotal=itemView.findViewById(R.id.txtItemTotal);
             linOnlinePayment=itemView.findViewById(R.id.linOnlinePayment);
         }
     }
-
-
 }

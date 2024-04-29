@@ -1,6 +1,5 @@
 package com.food.food_order_hotel_admin;
-
-
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -27,8 +26,8 @@ import java.net.URL;
 
 import food.food_order_hotel_admin.R;
 
-public class
-MyFirebaseMessagingService<v> extends FirebaseMessagingService {
+
+public class MyFirebaseMessagingService<v> extends FirebaseMessagingService {
 
 
 
@@ -40,15 +39,8 @@ MyFirebaseMessagingService<v> extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage)
     {
         Log.d("msg", "onMessageReceived: " + remoteMessage.getData().get("title"));
-
-
-        String title = remoteMessage.getData().get("title");
+        String title = "You Have New Order Please Check...";
         String body = remoteMessage.getData().get("body");
-        //    String imgurl = remoteMessage.getData().get("image");
-
-
-        //   bitmap=getbitmap(imgurl);
-
         getnotifiacation(title,body);
     }
 
@@ -68,14 +60,14 @@ MyFirebaseMessagingService<v> extends FirebaseMessagingService {
         PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
         notifiaction=new NotificationCompat.Builder(this,id)
                 .setAutoCancel(true)
-                .setContentTitle("" + title)
+                .setContentTitle("Hey" + title)
                 .setContentText(body)
-//                .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setSmallIcon(R.drawable.logo_top)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
+                .setSmallIcon(R.drawable.skyeat_logo)
                 .setVibrate(new long[]{100,200,300,400,500,600,700,800,900})
                 .setContentIntent(pendingIntent);
         MediaPlayer mp;
-        mp =MediaPlayer.create(MyFirebaseMessagingService.this, R.raw.fullnity);
+        mp =MediaPlayer.create(MyFirebaseMessagingService.this, R.raw.land_line);
         mp.start();
 
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

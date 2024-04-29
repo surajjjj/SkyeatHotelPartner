@@ -57,11 +57,11 @@ public class NewTrajectionAdpter extends ArrayAdapter<TranjectionItem> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if (oi.getType().equals("Cr"))
+        if (oi.getType().equals("Cr")&&oi.getStatus().equals("Success"))
         {
             holder.tvOrderType.setText("Payment Success");
             holder.tvOrderType.setTextColor(Color.parseColor("#03fc28"));
-        } else if (oi.getType().equals("Dr")) {
+        } else if (oi.getType().equals("Cr")&&oi.getStatus().equals("Request")) {
             holder.tvOrderType.setText("Payment Pending");
             holder.tvOrderType.setTextColor(Color.parseColor("#e01304"));
 

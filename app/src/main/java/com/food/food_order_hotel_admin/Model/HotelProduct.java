@@ -9,7 +9,7 @@ public class HotelProduct
 {
     @SerializedName("data")
     @Expose
-    public List<HotelProduct.Data> data;
+    public List<Data> data;
 
     public List<Data> getData() {
         return data;
@@ -25,9 +25,69 @@ public class HotelProduct
         @Expose
         private String title;
 
+        @SerializedName("foodType")
+        @Expose
+        private String foodType;
+
+        @SerializedName("image")
+        @Expose
+        private String image;
+
+        @SerializedName("hotelrealprice")
+        @Expose
+        private String hotelrealprice;
+
+        @SerializedName("restaurantproduct_id")
+        @Expose
+        private String restaurantproduct_id;
+
+        public String getRestaurantproduct_id() {
+            return restaurantproduct_id;
+        }
+
+        public void setRestaurantproduct_id(String restaurantproduct_id) {
+            this.restaurantproduct_id = restaurantproduct_id;
+        }
+
+        public String getFoodType() {
+            return foodType;
+        }
+
+        public void setFoodType(String foodType) {
+            this.foodType = foodType;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public String getHotelrealprice() {
+            return hotelrealprice;
+        }
+
+        public void setHotelrealprice(String hotelrealprice) {
+            this.hotelrealprice = hotelrealprice;
+        }
+
         @SerializedName("price")
         @Expose
         private String price;
+
+        @SerializedName("out_of_stock")
+        @Expose
+        private String out_of_stock;
+
+        public String getOut_of_stock() {
+            return out_of_stock;
+        }
+
+        public void setOut_of_stock(String out_of_stock) {
+            this.out_of_stock = out_of_stock;
+        }
 
         @SerializedName("sale_price")
         @Expose

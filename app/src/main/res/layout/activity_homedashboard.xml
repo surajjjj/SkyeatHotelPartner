@@ -179,6 +179,19 @@
                         android:textColor="@color/white"
                         android:textSize="18sp" />
                     <TextView
+                        android:visibility="gone"
+                        android:padding="10dp"
+                        android:id="@+id/clearnew"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:fontFamily="@font/gilroyblack"
+                        android:text="Your Store COD You Cant Request Payment"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                    <TextView
                         android:id="@+id/txtPayNow"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -189,7 +202,7 @@
                         android:textStyle="bold"
                         android:textAlignment="center"
                         android:gravity="center"
-                        android:text="Request my payment"
+                        android:text="Withdraw Payment"
                         android:background="#0F8C15"/>
 
 
@@ -266,6 +279,49 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/menuopen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true"
+                            app:contentPadding="12dp">
+
+                            <LinearLayout
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_gravity="center"
+
+                                    android:src="@drawable/menu" />
+
+                                <RelativeLayout
+                                    android:gravity="center"
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/gilroyblack"
+                                        android:text="Menu"
+                                        android:textColor="#3C3C3C"
+                                        android:textSize="13sp" />
+
+                               />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+   <androidx.cardview.widget.CardView
                             android:id="@+id/payout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -357,20 +413,57 @@
                 </HorizontalScrollView>
 
                 <TextView
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
                     android:fontFamily="@font/gilroyblack"
                     android:padding="8dp"
-                    android:text="Grow your Bussiness"
+                    android:text="Store Manage On / Off"
                     android:textColor="#000000"
                     android:textSize="18sp" />
+                <LinearLayout
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/lin3"
+                    android:layout_marginTop="10dp"
+                   >
+
+                    <ToggleButton
+                        android:id="@+id/toggale"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="100dp"
+
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="?attr/actionModeSplitBackground"
+                        android:textSize="11dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvvillagename"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+
+                        android:gravity="right"
+                        android:textColor="#06F906"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
 
 
-        </LinearLayout>
+
+
+
+            </LinearLayout>
 
 
         </ScrollView>

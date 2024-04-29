@@ -5,6 +5,7 @@ import com.food.food_order_hotel_admin.Model.DeliveryBoy;
 import com.food.food_order_hotel_admin.Model.GAllOrder;
 import com.food.food_order_hotel_admin.Model.Hotel;
 import com.food.food_order_hotel_admin.Model.HotelLogin;
+import com.food.food_order_hotel_admin.Model.HotelProduct;
 import com.food.food_order_hotel_admin.Model.Login;
 import com.food.food_order_hotel_admin.Model.Sample;
 import com.food.food_order_hotel_admin.Model.Transition;
@@ -36,6 +37,12 @@ public interface Api {
     @GET("actions.php")
     Call<GAllOrder> getDeliveryBoyOrders(@Query("action") String action,
                                    @Query("delivery_assigned") String delivery_assigned);
+    @GET("actions.php")
+    Call<HotelProduct> getHotelMenu(@Query("action") String action,
+                                    @Query("vendor") String vendor);
+    Call<Sample> updateMenuAvailable(@Query("action") String action,
+                                     @Query("restaurantproduct_id") String restaurantproduct_id);
+
 
 
 

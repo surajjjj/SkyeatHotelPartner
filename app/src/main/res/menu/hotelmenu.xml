@@ -15,6 +15,7 @@
 
                 </item>
                 <item
+                    android:visible="false"
                     android:id="@+id/menuMySale"
                     android:icon="@drawable/report"
                     android:title="Report">
@@ -43,6 +44,13 @@
                     android:id="@+id/menuAllOrders"
                     android:icon="@drawable/bell"
                     android:title="Orders">
+
+                </item>
+
+                <item
+                    android:id="@+id/menuMenu"
+                    android:icon="@drawable/menu"
+                    android:title="Menu">
 
                 </item>
                 <item

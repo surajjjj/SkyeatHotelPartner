@@ -9,12 +9,29 @@
       "client_info": {
         "mobilesdk_app_id": "1:192706668737:android:92ccd3ea52efd8d9124c40",
         "android_client_info": {
+
           "package_name": "food.food_order_hotel_admin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "192706668737-8sqcnrr323c07ib77cuptqj86g23p6de.apps.googleusercontent.com",
+          "client_id": "192706668737-87ugo6ojdb54ccqa409gpt99vok635bs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "food.food_order_hotel_admin",
+            "certificate_hash": "4ed16489aaf3d15e8a4429a7a392e6ea5296956f"
+          }
+        },
+        {
+          "client_id": "192706668737-jg3257jj77emc4eq2qnnh2vneonqe4jm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "food.food_order_hotel_admin",
+            "certificate_hash": "24a430b90979193acd86560334560cc1ec0a81f6"
+          }
+        },
+        {
+          "client_id": "192706668737-a7a0gf9iooo0n2ubtlfrlsnpd8sl9feo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

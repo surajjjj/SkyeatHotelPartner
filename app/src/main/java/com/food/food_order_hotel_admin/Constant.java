@@ -25,7 +25,7 @@ public class Constant
     public static String IV ="abcdefghi";
     public static String MODE ="Blowfish/CBC/PKCS5Padding";
     public static String ALGORITHM ="Blowfish";
-    public static final String APP_PACKAGE_NAME = "food.food_order_Delivaryboy";
+    public static final String APP_PACKAGE_NAME = "food.food_order_hotel_admin";
 //
 //    public AlertDialog alertDialog;
 //    public AlertDialog.Builder builder;

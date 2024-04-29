@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -59,11 +60,12 @@ public class OrderDetailActivity extends AppCompatActivity
     CustomDialog customDialog;
     MediaPlayer mp,mppickuo,mpdeliverd;
 
-    TextView txtReason,txtManagerName,txtSubmit,txtCancel,txtItemTotal,txtDeliveryFee,txtStoreCharge,txtTax,process;
+    TextView txtreadyorder,txtReason,txtManagerName,txtSubmit,txtCancel,txtItemTotal,txtDeliveryFee,txtStoreCharge,txtTax,process;
     String managerName,reason;
     LinearLayout linLayout,linLayoutCancel;
 
     AsyncTask<String, Void, String> updatetoken;
+    AsyncTask<String, Void, String> updatetokenall;
     JSONParser jsonParser=new JSONParser();
 
     ItemAdapter itemAdapter;
@@ -78,15 +80,15 @@ public class OrderDetailActivity extends AppCompatActivity
     String gtotal;
     TextView txtDBoyName,txtHotelName,txtOrderStatus;
     public boolean isAcceptOrder=false;
-    LinearLayout lindelboy;
+    LinearLayout lindelboy,linlayoutready;
 
-    TextView txtAdd, txtSaleId,txtUserName,txtSaleCode,txtBuyer,txtPaymentType,txtAllTotal,txtPaymentStatus,txtDeliveryState;
+    TextView txtpaymentstatuss,totalpayout,companycommission,txtAdd, txtSaleId,txtUserName,txtSaleCode,txtBuyer,txtPaymentType,txtAllTotal,txtPaymentStatus,txtDeliveryState;
     List<GAllOrder.Data> orderList =new ArrayList<>();
 
     ArrayList<DeliveryBoy.Data> deliveryBoyList = new ArrayList<>();
     ArrayList<DeliveryBoy.Data> zoneDeliveryBoy = new ArrayList<>();
     ArrayList<Hotel.Data> allHotelList=new ArrayList<>();
-    String status,saleId,zoneId,driverId,vendorId,phoneNo,delBoyPhoneNo,hotelPhoneNo,userName,itemTotal,productDetails,allTotal,paymentType;
+    String per_order_payment_status, net_payable_hotel,hotel_commision,hotel_price,delivery_state,status,saleId,zoneId,driverId,vendorId,phoneNo,delBoyPhoneNo,hotelPhoneNo,userName,itemTotal,productDetails,allTotal,paymentType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,8 +99,13 @@ public class OrderDetailActivity extends AppCompatActivity
         Bundle bundle = intent.getExtras();
         if(bundle != null)
         {
+            per_order_payment_status=bundle.getString("per_order_payment_status");
             status=bundle.getString("status");
+            delivery_state=bundle.getString("delivery_state");
             saleId=bundle.getString("saleId");
+            hotel_price=bundle.getString("hotel_price");
+            hotel_commision=bundle.getString("hotel_commision");
+            net_payable_hotel=bundle.getString("net_payable_hotel");
             zoneId=bundle.getString("zoneId");
             driverId=bundle.getString("driverId");
             vendorId=bundle.getString("vendorId");
@@ -120,13 +127,18 @@ public class OrderDetailActivity extends AppCompatActivity
         txtAllTotal=findViewById(R.id.txtAllTotal);
         txtAdd=findViewById(R.id.txtAdd);
         txtSaleId=findViewById(R.id.txtSaleId);
+        linlayoutready=findViewById(R.id.linlayoutready);
         lstItem=findViewById(R.id.lstItem);
         txtUserName=findViewById(R.id.txtUserName);
         imgUserPhoneNo=findViewById(R.id.imgUserPhoneNo);
         imgDelBoyPhone=findViewById(R.id.imgDelBoyPhone);
         imgHotelPhone=findViewById(R.id.imgHotelPhone);
         txtCancelOrder=findViewById(R.id.txtCancelOrder);
+        txtpaymentstatuss=findViewById(R.id.txtpaymentstatuss);
         txtItemTotal=findViewById(R.id.txtItemTotal);
+        companycommission=findViewById(R.id.companycommission);
+        totalpayout=findViewById(R.id.totalpayout);
+        txtreadyorder=findViewById(R.id.txtreadyorder);
         txtDeliveryFee=findViewById(R.id.txtDeliveryFee);
         txtStoreCharge=findViewById(R.id.txtStoreCharge);
         txtTax=findViewById(R.id.txtTax);
@@ -147,17 +159,17 @@ public class OrderDetailActivity extends AppCompatActivity
 
         if(status.equalsIgnoreCase("Placed"))
         {
-            linLayoutCancel.setVisibility(View.GONE);
+            linLayoutCancel.setVisibility(View.VISIBLE);
 
             linLayout.setVisibility(View.VISIBLE);
         } else if (status.equalsIgnoreCase("Shipped"))
         {
             linLayout.setVisibility(View.GONE);
-            linLayoutCancel.setVisibility(View.VISIBLE);
+//            linLayoutCancel.setVisibility(View.VISIBLE);
         } else
         {
             linLayout.setVisibility(View.GONE);
-            linLayoutCancel.setVisibility(View.GONE);
+//            linLayoutCancel.setVisibility(View.GONE);
         }
 
        // getOderDetails();
@@ -166,8 +178,22 @@ public class OrderDetailActivity extends AppCompatActivity
         setData();
         LinearLayoutManager llm=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         lstItem.setLayoutManager(llm);
-
-
+        if (status.equals("Ready"))
+        {
+            linlayoutready.setVisibility(View.VISIBLE);
+        }
+        if (per_order_payment_status.equals("0"))
+        {
+            txtpaymentstatuss.setText("Payment Pending");
+            txtpaymentstatuss.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+        else {
+            txtpaymentstatuss.setText("Payment Success");
+            txtpaymentstatuss.setBackgroundColor(Color.parseColor("#00cc99"));
+        }
+        txtItemTotal.setText(""+hotel_price.split("\\.")[0]);
+        companycommission.setText(""+hotel_commision.split("\\.")[0]);
+        totalpayout.setText(""+net_payable_hotel.split("\\.")[0]);
         imgUserPhoneNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,9 +227,44 @@ public class OrderDetailActivity extends AppCompatActivity
         btnAccept.setOnClickListener(new View.OnClickListener()
         {
             @Override
+
             public void onClick(View view) {
 
+                if(cd.isConnectingToInternet()){
+                    String url= null;
+
+
+                    try {
+                        url = Config.get_url+
+                                "action=update_del_boy_order"+
+                                "&status=" + URLEncoder.encode("Ready", "utf-8") +
+                                "&delivery_state=" + URLEncoder.encode("Ready", "utf-8") +
+                                "&sale_id=" + URLEncoder.encode(saleId, "utf-8") ;
+                    } catch (UnsupportedEncodingException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    ;
+
+                    updatetokenall = new UpdateTokenall();
+                    updatetokenall.execute(url);
+
+                }else{
+//                                Toast.makeText(HotelAdmin_MenusActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+//                                finish();
+                }
+
                 // Toast.makeText(getContext(), "Accept", Toast.LENGTH_SHORT).show();
+
+                linLayout.setVisibility(View.GONE);
+                linLayoutCancel.setVisibility(View.GONE);
+                linlayoutready.setVisibility(View.VISIBLE);
+
+            }
+        });
+        txtreadyorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 isAcceptOrder=true;
                 openPopup();
             }
@@ -237,7 +298,7 @@ public class OrderDetailActivity extends AppCompatActivity
     public void setData() {
         txtSaleId.setText("SaleID #"+saleId);
         txtAdd.setText(OrderAdapter.coustmAddress);
-        txtOrderStatus.setText(status);
+        txtOrderStatus.setText(delivery_state);
         if (status.equals("Placed"))
         {
             lindelboy.setVisibility(View.GONE);
@@ -272,7 +333,7 @@ public class OrderDetailActivity extends AppCompatActivity
         try
         {
             itemTotalJsonArray=new JSONObject(itemTotal);
-            txtItemTotal.setText(itemTotalJsonArray.getString("itemTotal"));
+         //   txtItemTotal.setText(itemTotalJsonArray.getString("itemTotal"));
             txtDeliveryFee.setText(itemTotalJsonArray.getString("driver_tips"));
             txtStoreCharge.setText(itemTotalJsonArray.getString("packingCommission"));
             txtTax.setText(itemTotalJsonArray.getString("tax"));
@@ -308,18 +369,21 @@ public class OrderDetailActivity extends AppCompatActivity
                             @Override
                             public void onClick(int position) {
                                 delivery_assigned = zoneDeliveryBoy.get(position).getDriver_id();
-                                acceptOrder();
+                                 acceptOrder();
+
                                 mp.start();
 
                                 if(cd.isConnectingToInternet()){
                                     String url= null;
 
 
+                                    try {
                                         url = Config.get_url+
-                                                "action=send_notification_accpet_user" +
-                                                "&driver_id=" + URLEncoder.encode(zoneDeliveryBoy.get(position).getDriver_id());
-
-
+                                                "action=send_notification_delboy" +
+                                                "&driver_id=" + URLEncoder.encode(driverId, "utf-8") ;
+                                    } catch (UnsupportedEncodingException e) {
+                                        throw new RuntimeException(e);
+                                    }
 
                                     updatetoken = new UpdateToken();
                                     updatetoken.execute(url);
@@ -464,6 +528,8 @@ public class OrderDetailActivity extends AppCompatActivity
     {
         CustomDialog customDialog1 = new CustomDialog(OrderDetailActivity.this);
         customDialog1.setContentView(R.layout.popup_delivery_boy);
+
+
         lstDeliveryBoy=customDialog1.findViewById(R.id.lstAllDeliveyBoy);
 
         zoneDeliveryBoy.clear();
@@ -693,6 +759,52 @@ public class OrderDetailActivity extends AppCompatActivity
                 if(jsonObject.getString("result").equals("true")){
 
                         Toast.makeText(OrderDetailActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                else {
+                    Toast.makeText(OrderDetailActivity.this, "not success", Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    class UpdateTokenall extends AsyncTask<String, Void, String> {
+        ProgressDialog dialog;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+//            dialog=new ProgressDialog(CategoriesActivity.this);
+//            dialog.setMessage("Getting trending menus");
+//            dialog.setCanceledOnTouchOutside(false);
+//            dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//                @Override
+//                public void onCancel(DialogInterface dialog) {
+//                    getcoupon.cancel(true);
+//                    finish();
+//                }
+//            });
+//            dialog.show();
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            return jsonParser.doGetRequest(params[0]);
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            //    dialog.dismiss();
+            if(result==null||result.trim().length()<=0){
+                Toast.makeText(OrderDetailActivity.this,"No response from server, Please check your internet connection", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            try {
+                JSONObject jsonObject=new JSONObject(result);
+                if(jsonObject.getString("result").equals("true")){
+
+                        Toast.makeText(OrderDetailActivity.this, "Order Accepted Succesfully", Toast.LENGTH_SHORT).show();
 
 
                     }

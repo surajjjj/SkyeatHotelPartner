@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -93,6 +94,7 @@ public class DeliveryBoyOrderDetailActivity extends AppCompatActivity {
         txtPaymentType=findViewById(R.id.txtPaymentType);
         txtAllTotal=findViewById(R.id.txtAllTotal);
         txtAdd=findViewById(R.id.txtAdd);
+
         txtSaleId=findViewById(R.id.txtSaleId);
         lstItem=findViewById(R.id.lstItem);
         txtUserName=findViewById(R.id.txtUserName);

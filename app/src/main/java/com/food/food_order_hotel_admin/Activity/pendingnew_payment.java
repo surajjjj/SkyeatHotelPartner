@@ -97,9 +97,9 @@ public class pendingnew_payment extends AppCompatActivity {
                         try {
                             url = Config.get_url +
                                     "action=insert_hotel_requeset" +
-                                    "&type=" + URLEncoder.encode("Dr", "utf-8") +
-                                    "&amount=" + URLEncoder.encode(txtRemainCash.getText().toString(), "utf-8") +
-                                    "&balance=" + URLEncoder.encode(txtRemainCash.getText().toString(), "utf-8") +
+                                    "&type=" + URLEncoder.encode("Cr", "utf-8") +
+                                    "&amount=" + URLEncoder.encode(""+txtRemainCash.getText().toString(), "utf-8") +
+                                    "&balance=" + URLEncoder.encode(""+txtRemainCash.getText().toString(), "utf-8") +
                                     "&status=" + URLEncoder.encode("Request", "utf-8") +
                                     "&message=" + URLEncoder.encode(txtMassage.getText().toString(), "utf-8") +
                                     "&made_by=" + URLEncoder.encode("vendor", "utf-8") +
@@ -225,7 +225,7 @@ public class pendingnew_payment extends AppCompatActivity {
                         else {
                             btnSubmitCash.setVisibility(View.VISIBLE);
 
-                            txtRemainCash.setText("₹ "+s);
+                            txtRemainCash.setText(s);
 
                         }
 
@@ -421,7 +421,9 @@ public class pendingnew_payment extends AppCompatActivity {
                     Toast.makeText(pendingnew_payment.this, "Wallet Request Created Succesfully", Toast.LENGTH_SHORT).show();
 
 
-
+                    Intent intent=new Intent(pendingnew_payment.this, Homedashboard.class);
+                    startActivity(intent);
+                    finish();
 
                     }
 

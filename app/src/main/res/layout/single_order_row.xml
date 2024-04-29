@@ -21,8 +21,10 @@
         />
 
     <androidx.cardview.widget.CardView
+
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="140dp"
         android:id="@+id/cardView"
         android:background="@color/white"
         android:orientation="vertical"
@@ -39,6 +41,7 @@
         app:cardElevation="7dp">
 
         <LinearLayout
+            android:background="@drawable/multicolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -66,10 +69,43 @@
                     android:layout_height="match_parent">
                     <TextView
                         android:layout_weight="3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="14sp"
+                        android:text="Skyeat Pvt Ltd"
+                        android:textStyle="bold">
+                    </TextView>
+                    <ImageView
+                        android:layout_weight="7"
+                        android:gravity="center"
+                        android:src="@drawable/skyeat_logo"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:padding="3dp"
+                        android:textColor="@color/colorGrey" />
+
+                </LinearLayout>
+                <View
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorgrey1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp" />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_weight="3"
                         android:id="@+id/txtSaleID"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorGrey2"
                         android:textSize="14sp"
                         android:text="Sale ID #"
                         android:textStyle="bold">
@@ -81,10 +117,9 @@
                         android:gravity="center"
 
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="5dp"
                         android:padding="3dp"
-                        android:text="adada"
                         android:fontFamily="@font/gilroybold"
                         android:textColor="@color/colorWhite" />
 
@@ -97,7 +132,7 @@
                     android:text="Date"
                     android:textSize="13sp"
                     android:textStyle="bold"
-                    android:textColor="#EBFA6F43">
+                    android:textColor="@color/colorGrey2">
                 </TextView>
                 <TextView
                     android:visibility="gone"
@@ -117,11 +152,8 @@
                 <!--            android:background="@color/black"-->
                 <!--            android:layout_height="0.8dp">-->
                 <!--        </View>-->
-                <View
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorAccent"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+
+
                 <LinearLayout
 
                     android:layout_width="match_parent"
@@ -188,9 +220,22 @@
 <!--                        android:textColor="#ff471a"-->
 <!--                        android:textSize="13dp" />-->
                 </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorGrey"
+                    android:layout_width="match_parent"
+
+
+                    android:layout_height="40dp">
+
+                </LinearLayout>
             </LinearLayout>
 
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>
